@@ -18,7 +18,7 @@ export default function CodeBlock({ children, language = 'text', showCopy = true
       try {
         const html = await codeToHtml(children, {
           lang: language,
-          theme: 'github-dark',
+          theme: 'github-light',
         });
         setHighlightedCode(html);
       } catch (error) {
@@ -40,12 +40,12 @@ export default function CodeBlock({ children, language = 'text', showCopy = true
   return (
     <div className="relative group my-6">
       {language && (
-        <div className="flex items-center justify-between bg-[#0d1117] px-4 py-2 rounded-t-lg border-b border-gray-800">
-          <span className="text-xs text-gray-400 font-mono">{language}</span>
+        <div className="flex items-center justify-between bg-muted/70 px-4 py-2 rounded-t-xl border-b border-border">
+          <span className="text-xs text-muted-foreground font-mono uppercase tracking-wider">{language}</span>
           {showCopy && (
             <button
               onClick={handleCopy}
-              className="text-xs text-gray-400 hover:text-white transition-colors font-mono"
+              className="text-xs text-muted-foreground hover:text-primary transition-colors font-mono"
             >
               {copied ? '✓ Copied' : 'Copy'}
             </button>
@@ -53,7 +53,7 @@ export default function CodeBlock({ children, language = 'text', showCopy = true
         </div>
       )}
       <div
-        className={`code-block ${language ? 'rounded-t-none' : 'rounded-lg'} relative overflow-x-auto bg-[#0d1117]`}
+        className={`code-block ${language ? 'rounded-t-none' : 'rounded-xl'} relative overflow-x-auto bg-card border border-t-0 border-border rounded-b-xl shadow-sm`}
         dangerouslySetInnerHTML={{ __html: highlightedCode }}
       />
     </div>

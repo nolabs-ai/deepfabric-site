@@ -2,26 +2,29 @@ import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="relative min-h-screen px-4 pb-20">
+      <div className="absolute inset-x-0 top-0 h-96 bg-aura pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-96 grid-lines pointer-events-none" aria-hidden="true" />
+      <div className="relative max-w-4xl mx-auto pt-16 md:pt-24">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Community</h1>
-          <p className="text-xl text-muted-foreground">
+        <div className="text-center mb-14">
+          <p className="eyebrow mb-4">Contribute</p>
+          <h1 className="text-4xl md:text-6xl font-semibold mb-4">Community</h1>
+          <p className="text-lg md:text-xl text-muted-foreground">
             Join our community of developers and contributors
           </p>
         </div>
 
         {/* How to Contribute */}
-        <div className="glass-panel p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6">How to Contribute</h2>
+        <div className="card-surface p-8 mb-8">
+          <h2 className="text-2xl font-semibold mb-6">How to Contribute</h2>
           <div className="space-y-6 text-muted-foreground">
             <div>
               <h3 className="font-semibold text-foreground mb-2">1. Fork the Repository</h3>
               <p className="text-sm mb-3">
                 Start by forking the DeepFabric repository on GitHub.
               </p>
-              <div className="bg-slate-900 p-4 rounded-lg">
+              <div className="bg-muted/70 border border-border p-4 rounded-xl overflow-x-auto">
                 <code className="text-primary text-sm font-mono">
                   git clone https://github.com/your-username/deepfabric.git
                 </code>
@@ -32,7 +35,7 @@ export default function CommunityPage() {
               <p className="text-sm mb-3">
                 Create a new branch for your feature or bug fix.
               </p>
-              <div className="bg-slate-900 p-4 rounded-lg">
+              <div className="bg-muted/70 border border-border p-4 rounded-xl overflow-x-auto">
                 <code className="text-primary text-sm font-mono">
                   git checkout -b feature/amazing-feature
                 </code>
@@ -54,22 +57,22 @@ export default function CommunityPage() {
         </div>
 
         {/* Ways to Contribute */}
-        <div className="glass-panel p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6">Ways to Contribute</h2>
+        <div className="card-surface p-8 mb-8">
+          <h2 className="text-2xl font-semibold mb-6">Ways to Contribute</h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 border border-border rounded-lg">
+            <div className="p-5 border border-border rounded-2xl bg-background/60 transition-colors hover:border-primary/40">
               <h3 className="font-semibold text-foreground mb-2">Code</h3>
               <p className="text-sm text-muted-foreground">Add features, fix bugs, improve performance</p>
             </div>
-            <div className="p-4 border border-border rounded-lg">
+            <div className="p-5 border border-border rounded-2xl bg-background/60 transition-colors hover:border-primary/40">
               <h3 className="font-semibold text-foreground mb-2">Documentation</h3>
               <p className="text-sm text-muted-foreground">Write guides, improve examples, fix typos</p>
             </div>
-            <div className="p-4 border border-border rounded-lg">
+            <div className="p-5 border border-border rounded-2xl bg-background/60 transition-colors hover:border-primary/40">
               <h3 className="font-semibold text-foreground mb-2">Design</h3>
               <p className="text-sm text-muted-foreground">Create themes, improve UI/UX, add graphics</p>
             </div>
-            <div className="p-4 border border-border rounded-lg">
+            <div className="p-5 border border-border rounded-2xl bg-background/60 transition-colors hover:border-primary/40">
               <h3 className="font-semibold text-foreground mb-2">Community</h3>
               <p className="text-sm text-muted-foreground">Help others, answer questions, share knowledge</p>
             </div>
@@ -77,8 +80,8 @@ export default function CommunityPage() {
         </div>
 
         {/* Code of Conduct */}
-        <div className="glass-panel p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6">Code of Conduct</h2>
+        <div className="card-surface p-8 mb-8">
+          <h2 className="text-2xl font-semibold mb-6">Code of Conduct</h2>
           <div className="text-muted-foreground space-y-4 text-sm">
             <p>
               We are committed to providing a welcoming and inspiring community for all.
@@ -95,11 +98,11 @@ export default function CommunityPage() {
 
         {/* Connect */}
         <div className="text-center mt-12">
-          <h2 className="text-2xl font-bold mb-6">Connect With Us</h2>
+          <h2 className="text-2xl font-semibold mb-6">Connect With Us</h2>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="https://github.com/always-further/deepfabric"
-              className="px-6 py-3 bg-foreground text-background rounded-full font-medium hover:opacity-90 transition-all"
+              className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -107,7 +110,7 @@ export default function CommunityPage() {
             </Link>
             <Link
               href="https://github.com/always-further/deepfabric/discussions"
-              className="px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-all"
+              className="btn-secondary"
               target="_blank"
               rel="noopener noreferrer"
             >

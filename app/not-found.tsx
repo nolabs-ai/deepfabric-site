@@ -2,10 +2,11 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen px-4 flex items-center justify-center">
-      <div className="max-w-md text-center">
+    <div className="relative min-h-[80vh] px-4 flex items-center justify-center">
+      <div className="absolute inset-0 bg-aura pointer-events-none" aria-hidden="true" />
+      <div className="relative max-w-md text-center">
         {/* Error Code */}
-        <div className="text-8xl font-bold text-primary mb-4">404</div>
+        <div className="text-8xl font-semibold gradient-text mb-4 font-display">404</div>
 
         {/* Error Message */}
         <h1 className="text-2xl font-bold text-foreground mb-2">
@@ -21,13 +22,13 @@ export default function NotFound() {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/"
-              className="px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+              className="btn-secondary !py-2 !px-4"
             >
               Home
             </Link>
             <Link
               href="https://docs.deepfabric.dev"
-              className="px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+              className="btn-secondary !py-2 !px-4"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -35,7 +36,7 @@ export default function NotFound() {
             </Link>
             <Link
               href="/blog"
-              className="px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+              className="btn-secondary !py-2 !px-4"
             >
               Blog
             </Link>
@@ -45,7 +46,7 @@ export default function NotFound() {
         {/* Return Home Button */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-all"
+          className="btn-primary"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
