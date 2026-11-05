@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import TopicGraph from '@/components/TopicGraph';
+import WasmDiagram from '@/components/WasmDiagram';
+import TrainingDiagram from '@/components/TrainingDiagram';
 
-const GITHUB = 'https://github.com/always-further/deepfabric';
+const GITHUB = 'https://github.com/nolabs-ai/deepfabric';
 const DOCS = 'https://docs.deepfabric.dev';
 
 const Icon = ({ children }: { children: React.ReactNode }) => (
@@ -75,6 +77,19 @@ const graphSteps = [
   { n: '02', title: 'TOPICS', body: 'The domain is split into its major areas of knowledge.' },
   { n: '03', title: 'SUBTOPICS', body: 'Each area expands into specific, non-overlapping subtopics.' },
   { n: '04', title: 'SAMPLES', body: 'Every subtopic yields training samples, with tools actually executed.' },
+];
+
+const sandboxSteps = [
+  { n: '01', title: 'IMPORT', body: 'Pull tool schemas from your MCP server into the sandbox.' },
+  { n: '02', title: 'MOCK', body: 'Load mock responses and seed files for the tools to work with.' },
+  { n: '03', title: 'EXECUTE', body: 'Agent calls run as WebAssembly components, so they really execute.' },
+  { n: '04', title: 'RECORD', body: 'Real results are logged into each training sample.' },
+];
+
+const sandboxBenefits = [
+  { title: 'Safe', body: 'Nothing real can be touched. Calls stay inside the sandbox.' },
+  { title: 'Free', body: 'No API costs while you generate thousands of samples.' },
+  { title: 'Standalone', body: 'No dependency on a live service during data creation.' },
 ];
 
 const features = [
@@ -257,6 +272,86 @@ export default function Home() {
               ))}
             </ul>
             <p className="relative mt-6 text-sm text-muted-foreground">Models are grounded and efficient.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* WebAssembly tool mocking */}
+      <section className="px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-10">
+            <p className="eyebrow mb-4">Tool execution</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">
+              Real tool calls, mocked safely with <span className="gradient-text">WebAssembly</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Simulated tool outputs teach models to hallucinate. DeepFabric runs your tools in a Spin
+              sandbox instead: each one is a WebAssembly component backed by mock data, so the agent
+              gets genuine, deterministic results without touching a live API.
+            </p>
+          </div>
+
+          <div className="card-surface p-3 md:p-6">
+            <WasmDiagram className="w-full h-auto" />
+            <ol className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5 border-t border-border pt-5 px-2">
+              {sandboxSteps.map((g) => (
+                <li key={g.n}>
+                  <p className="font-mono text-[0.7rem] tracking-[0.18em] text-primary mb-1.5">
+                    {g.n} <span className="text-foreground">{g.title}</span>
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{g.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {sandboxBenefits.map((b) => (
+              <div key={b.title} className="card-surface p-6">
+                <h3 className="text-lg font-semibold mb-1.5">{b.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{b.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SFT / GRPO training */}
+      <section className="px-4 py-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-10">
+            <p className="eyebrow mb-4">Training</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">
+              Teach with <span className="gradient-text">SFT</span>, sharpen with <span className="gradient-text">GRPO</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Start by fine-tuning on grounded conversations, then keep improving with reinforcement
+              learning scored against the same sandboxed tools.
+            </p>
+          </div>
+
+          <div className="card-surface p-3 md:p-6">
+            <TrainingDiagram className="w-full h-auto" />
+          </div>
+
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="card-surface card-hover p-7">
+              <p className="font-mono text-[0.7rem] tracking-[0.2em] text-primary mb-3">01 · SFT</p>
+              <h3 className="text-xl font-semibold mb-2">Supervised fine-tuning</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                The built-in <code className="font-mono text-sm text-primary">trl_sft</code> formatter turns
+                generated samples into tool-calling conversations ready for TRL&apos;s SFTTrainer, or export
+                to Unsloth and Axolotl. The model learns the format and how to call tools.
+              </p>
+            </div>
+            <div className="card-surface card-hover p-7">
+              <p className="font-mono text-[0.7rem] tracking-[0.2em] text-primary mb-3">02 · GRPO</p>
+              <h3 className="text-xl font-semibold mb-2">Reinforcement with GRPO</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Sample a group of attempts per task, run their tool calls in the sandbox, and reward the
+                ones that work. The policy is updated toward what actually succeeds, not just what looks right.
+              </p>
+            </div>
           </div>
         </div>
       </section>

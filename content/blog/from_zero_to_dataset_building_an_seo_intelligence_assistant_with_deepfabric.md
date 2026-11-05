@@ -39,7 +39,7 @@ I'm cloning the entire DeepFabric repo rather than just installing the packageâ€
 Let's get started with the setup:
 
 ```shell
-git clone https://github.com/always-further/deepfabric.git
+git clone https://github.com/nolabs-ai/deepfabric.git
 cd deepfabric
 uv venv --python 3.12
 uv sync --all-extras
@@ -72,8 +72,8 @@ The process involves five steps:
 We'll pull the DeepFabric tools-SDK Docker container, which houses a customized version of the SPIN framework:
 
 ```shell
-docker pull ghcr.io/always-further/deepfabric/tools-sdk:latest
-docker tag ghcr.io/always-further/deepfabric/tools-sdk:latest deepfabric-tools-sdk
+docker pull ghcr.io/nolabs-ai/deepfabric/tools-sdk:latest
+docker tag ghcr.io/nolabs-ai/deepfabric/tools-sdk:latest deepfabric-tools-sdk
 docker run -d -p 3000:3000 deepfabric-tools-sdk
 
 curl http://localhost:3000/vfs/health

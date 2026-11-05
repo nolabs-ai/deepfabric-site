@@ -12,7 +12,7 @@ const navLinks = [
   { href: '/community', label: 'Community', external: false },
 ];
 
-const GITHUB = 'https://github.com/always-further/deepfabric';
+const GITHUB = 'https://github.com/nolabs-ai/deepfabric';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

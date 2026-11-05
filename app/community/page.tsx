@@ -101,7 +101,7 @@ export default function CommunityPage() {
           <h2 className="text-2xl font-semibold mb-6">Connect With Us</h2>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="https://github.com/always-further/deepfabric"
+              href="https://github.com/nolabs-ai/deepfabric"
               className="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
@@ -109,7 +109,7 @@ export default function CommunityPage() {
               GitHub
             </Link>
             <Link
-              href="https://github.com/always-further/deepfabric/discussions"
+              href="https://github.com/nolabs-ai/deepfabric/discussions"
               className="btn-secondary"
               target="_blank"
               rel="noopener noreferrer"

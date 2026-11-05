@@ -13,8 +13,8 @@ const columns = [
     title: 'Community',
     links: [
       { href: '/community', label: 'Contribute', external: false },
-      { href: 'https://github.com/always-further/deepfabric', label: 'GitHub', external: true },
-      { href: 'https://github.com/always-further/deepfabric/issues', label: 'Issues', external: true },
+      { href: 'https://github.com/nolabs-ai/deepfabric', label: 'GitHub', external: true },
+      { href: 'https://github.com/nolabs-ai/deepfabric/issues', label: 'Issues', external: true },
     ],
   },
 ];
@@ -62,7 +62,7 @@ export default function Footer() {
             © {new Date().getFullYear()} DeepFabric. Always Further, Inc. All rights reserved.
           </p>
           <Link
-            href="https://github.com/always-further/deepfabric"
+            href="https://github.com/nolabs-ai/deepfabric"
             className="text-muted-foreground hover:text-foreground transition-colors"
             target="_blank"
             rel="noopener noreferrer"
