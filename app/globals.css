@@ -359,3 +359,46 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* ---------- Scroll choreography (homepage) ---------- */
+[data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 110ms);
+  will-change: opacity, transform;
+}
+[data-reveal][data-hidden="true"] {
+  opacity: 0;
+  transform: translateY(44px) scale(0.97);
+  filter: blur(8px);
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  html.snap-page {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 4rem; /* sticky header */
+  }
+  .snap-page .snap-section {
+    scroll-snap-align: start;
+    min-height: calc(100svh - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* let the footer be a resting point so the page can scroll to its end */
+  .snap-page footer {
+    scroll-snap-align: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal][data-hidden="true"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}

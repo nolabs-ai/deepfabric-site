@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ScrollEffects from '@/components/ScrollEffects';
 import TopicGraph from '@/components/TopicGraph';
 import WasmDiagram from '@/components/WasmDiagram';
 import TrainingDiagram from '@/components/TrainingDiagram';
@@ -86,12 +87,6 @@ const sandboxSteps = [
   { n: '04', title: 'RECORD', body: 'Real results are logged into each training sample.' },
 ];
 
-const sandboxBenefits = [
-  { title: 'Safe', body: 'Nothing real can be touched. Calls stay inside the sandbox.' },
-  { title: 'Free', body: 'No API costs while you generate thousands of samples.' },
-  { title: 'Standalone', body: 'No dependency on a live service during data creation.' },
-];
-
 const features = [
   {
     icon: icons.graph,
@@ -127,9 +122,10 @@ const Arrow = () => (
 
 export default function Home() {
   return (
-    <div className="font-sans overflow-x-hidden">
+    <div className="font-sans overflow-x-clip">
+      <ScrollEffects />
       {/* Hero */}
-      <section className="relative px-4 pt-16 md:pt-24 pb-12">
+      <section id="top" data-snap data-label="Overview" className="snap-section relative px-4 pt-16 md:pt-24 pb-12">
         <div className="absolute inset-0 bg-aura pointer-events-none" aria-hidden="true" />
         <div className="absolute inset-0 grid-lines pointer-events-none" aria-hidden="true" />
 
@@ -187,9 +183,9 @@ export default function Home() {
       </section>
 
       {/* Pipeline */}
-      <section className="px-4 py-20">
+      <section id="pipeline" data-snap data-label="Pipeline" className="snap-section px-4 py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div data-reveal className="text-center mb-12">
             <p className="eyebrow mb-4">Architecture</p>
             <h2 className="text-3xl md:text-4xl font-semibold">How the DeepFabric pipeline works</h2>
           </div>
@@ -200,8 +196,8 @@ export default function Home() {
               className="hidden md:block absolute left-[12%] right-[12%] top-[3.1rem] h-px bg-gradient-to-r from-primary/0 via-primary/40 to-cyan/0"
               aria-hidden="true"
             />
-            {steps.map((s) => (
-              <li key={s.n} className="card-surface card-hover relative p-6">
+            {steps.map((s, i) => (
+              <li key={s.n} data-reveal={i + 1} className="card-surface card-hover relative p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/15 to-cyan/15 text-primary flex items-center justify-center ring-1 ring-primary/15">
                     {s.icon}
@@ -217,9 +213,9 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section className="px-4 py-12">
+      <section id="why" data-snap data-label="Why" className="snap-section px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-10">
+          <div data-reveal className="max-w-2xl mb-10">
             <p className="eyebrow mb-4">Why DeepFabric</p>
             <h2 className="text-3xl md:text-4xl font-semibold">
               Domain-anchored diversity <span className="gradient-text">without redundancy</span>
@@ -227,8 +223,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {features.map((f) => (
-              <div key={f.title} className={`card-surface card-hover p-7 ${f.span}`}>
+            {features.map((f, i) => (
+              <div key={f.title} data-reveal={i + 1} className={`card-surface card-hover p-7 ${f.span}`}>
                 <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
                   {f.icon}
                 </div>
@@ -241,9 +237,9 @@ export default function Home() {
       </section>
 
       {/* Comparison */}
-      <section className="px-4 py-20">
+      <section id="compare" data-snap data-label="Compare" className="snap-section px-4 py-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="card-surface p-8 !bg-muted/40">
+          <div data-reveal="1" className="card-surface p-8 !bg-muted/40">
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-destructive mb-4">Standard approach</p>
             <ul className="space-y-3 text-muted-foreground">
               {['Repetitive samples', 'Simulated tool outputs', 'No validation'].map((t) => (
@@ -258,7 +254,7 @@ export default function Home() {
             <p className="mt-6 text-sm text-muted-foreground">Models overfit and hallucinate.</p>
           </div>
 
-          <div className="card-surface p-8 relative overflow-hidden">
+          <div data-reveal="2" className="card-surface p-8 relative overflow-hidden">
             <div className="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-gradient-to-br from-primary/25 to-cyan/25 blur-3xl pointer-events-none" aria-hidden="true" />
             <p className="relative font-mono text-[0.7rem] uppercase tracking-[0.2em] text-primary mb-4">DeepFabric approach</p>
             <ul className="relative space-y-3 text-foreground">
@@ -277,9 +273,9 @@ export default function Home() {
       </section>
 
       {/* WebAssembly tool mocking */}
-      <section className="px-4 py-20">
+      <section id="tools" data-snap data-label="Tools" className="snap-section px-4 py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-10">
+          <div data-reveal className="max-w-2xl mb-10">
             <p className="eyebrow mb-4">Tool execution</p>
             <h2 className="text-3xl md:text-4xl font-semibold">
               Real tool calls, mocked safely with <span className="gradient-text">WebAssembly</span>
@@ -291,7 +287,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="card-surface p-3 md:p-6">
+          <div data-reveal="1" className="card-surface p-3 md:p-6">
             <WasmDiagram className="w-full h-auto" />
             <ol className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-5 border-t border-border pt-5 px-2">
               {sandboxSteps.map((g) => (
@@ -304,52 +300,29 @@ export default function Home() {
               ))}
             </ol>
           </div>
-
-          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
-            {sandboxBenefits.map((b) => (
-              <div key={b.title} className="card-surface p-6">
-                <h3 className="text-lg font-semibold mb-1.5">{b.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{b.body}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* SFT / GRPO training */}
-      <section className="px-4 py-12">
+      {/* Training */}
+      <section id="train" data-snap data-label="Train" className="snap-section px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-10">
+          <div data-reveal className="max-w-2xl mb-10">
             <p className="eyebrow mb-4">Training</p>
             <h2 className="text-3xl md:text-4xl font-semibold">
-              Teach with <span className="gradient-text">SFT</span>, sharpen with <span className="gradient-text">GRPO</span>
+              <span className="gradient-text">Train</span>
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Start by fine-tuning on grounded conversations, then keep improving with reinforcement
-              learning scored against the same sandboxed tools.
+              Turn your dataset into a fine-tuned model with the frameworks you already use.
             </p>
           </div>
 
-          <div className="card-surface p-3 md:p-6">
+          <div data-reveal="1" className="card-surface p-3 md:p-6">
             <TrainingDiagram className="w-full h-auto" />
-          </div>
-
-          <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="card-surface card-hover p-7">
-              <p className="font-mono text-[0.7rem] tracking-[0.2em] text-primary mb-3">01 · SFT</p>
-              <h3 className="text-xl font-semibold mb-2">Supervised fine-tuning</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="mt-4 border-t border-border pt-5 px-2">
+              <p className="text-muted-foreground leading-relaxed max-w-3xl">
                 The built-in <code className="font-mono text-sm text-primary">trl_sft</code> formatter turns
                 generated samples into tool-calling conversations ready for TRL&apos;s SFTTrainer, or export
-                to Unsloth and Axolotl. The model learns the format and how to call tools.
-              </p>
-            </div>
-            <div className="card-surface card-hover p-7">
-              <p className="font-mono text-[0.7rem] tracking-[0.2em] text-primary mb-3">02 · GRPO</p>
-              <h3 className="text-xl font-semibold mb-2">Reinforcement with GRPO</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Sample a group of attempts per task, run their tool calls in the sandbox, and reward the
-                ones that work. The policy is updated toward what actually succeeds, not just what looks right.
+                to Unsloth and Axolotl. Then check the result with built-in evaluation on unseen tasks.
               </p>
             </div>
           </div>
@@ -357,8 +330,8 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="px-4 pb-10">
-        <div className="max-w-5xl mx-auto relative overflow-hidden rounded-[28px] border border-primary/20 bg-gradient-to-br from-primary via-violet to-cyan p-px">
+      <section id="community" data-snap data-label="Open source" className="snap-section px-4 pb-10">
+        <div data-reveal className="max-w-5xl mx-auto relative overflow-hidden rounded-[28px] border border-primary/20 bg-gradient-to-br from-primary via-violet to-cyan p-px">
           <div className="relative rounded-[27px] bg-background px-6 py-14 md:py-16 text-center overflow-hidden">
             <div className="absolute inset-0 bg-aura pointer-events-none" aria-hidden="true" />
             <div className="absolute inset-0 grid-lines opacity-70 pointer-events-none" aria-hidden="true" />
