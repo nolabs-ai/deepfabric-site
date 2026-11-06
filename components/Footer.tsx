@@ -59,7 +59,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} DeepFabric. Always Further, Inc. All rights reserved.
+            © {new Date().getFullYear()} DeepFabric. nolabs-ai. All rights reserved.
           </p>
           <Link
             href="https://github.com/nolabs-ai/deepfabric"
