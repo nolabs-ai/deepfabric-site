@@ -1,28 +1,33 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/inter-latin-wght-normal.woff2",
   variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "100 900",
   display: "swap",
 });
 
-const display = Sora({
-  subsets: ["latin"],
+const display = localFont({
+  src: "./fonts/sora-latin-wght-normal.woff2",
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  weight: "100 800",
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
+const plexMono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-200-normal.woff2", weight: "200" },
+    { path: "./fonts/ibm-plex-mono-latin-300-normal.woff2", weight: "300" },
+    { path: "./fonts/ibm-plex-mono-latin-400-normal.woff2", weight: "400" },
+    { path: "./fonts/ibm-plex-mono-latin-500-normal.woff2", weight: "500" },
+    { path: "./fonts/ibm-plex-mono-latin-600-normal.woff2", weight: "600" },
+  ],
   variable: "--font-plex-mono",
-  weight: ["200", "300", "400", "500", "600"],
   display: "swap",
 });
 
