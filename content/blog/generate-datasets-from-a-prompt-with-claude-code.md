@@ -223,6 +223,6 @@ For teams using DeepFabric regularly, the skill means new members can generate t
 
 ### Resources
 
-- **DeepFabric GitHub**: [https://github.com/always-further/deepfabric](https://github.com/always-further/deepfabric)
+- **DeepFabric GitHub**: [https://github.com/nolabs-ai/deepfabric](https://github.com/nolabs-ai/deepfabric)
 - **DeepFabric Docs**: [https://docs.deepfabric.dev/](https://docs.deepfabric.dev/)
 - **Claude Code Skills**: [https://docs.anthropic.com/en/docs/claude-code/skills](https://docs.anthropic.com/en/docs/claude-code/skills)

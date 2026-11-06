@@ -29,8 +29,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-3xl mx-auto">
+    <div className="relative min-h-screen px-4 pb-20">
+      <div className="absolute inset-x-0 top-0 h-80 bg-aura pointer-events-none" aria-hidden="true" />
+      <div className="relative max-w-3xl mx-auto pt-12 md:pt-16">
         {/* Back Button */}
         <div className="mb-8">
           <Link
@@ -46,13 +47,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Header */}
         <article>
-          <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <header className="mb-10 pb-8 border-b border-border">
+            <h1 className="text-3xl md:text-5xl font-semibold leading-tight text-foreground mb-5">
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
               <span className="font-medium text-foreground">{post.author}</span>
-              <span>-</span>
+              <span className="w-1 h-1 rounded-full bg-primary/50" />
               <span>{format(new Date(post.date), 'MMMM dd, yyyy')}</span>
             </div>
             {post.tags && post.tags.length > 0 && (
@@ -60,7 +61,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 border border-border rounded-full text-muted-foreground"
+                    className="text-xs px-3 py-1 rounded-full bg-primary/[0.07] text-primary font-medium"
                   >
                     {tag}
                   </span>
@@ -75,12 +76,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({ children }) => (
-                  <h1 className="text-3xl font-bold text-foreground mt-10 mb-4">
+                  <h1 className="text-3xl font-semibold text-foreground mt-10 mb-4">
                     {children}
                   </h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-2xl font-bold text-foreground mt-8 mb-3">
+                  <h2 className="text-2xl font-semibold text-foreground mt-8 mb-3">
                     {children}
                   </h2>
                 ),
@@ -181,7 +182,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         alt={displayAlt}
                         width={800}
                         height={450}
-                        className={`rounded-lg h-auto ${sizeClass}`}
+                        className={`rounded-xl border border-border shadow-sm h-auto ${sizeClass}`}
                         unoptimized
                       />
                       {displayAlt && (
@@ -203,7 +204,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="mt-12 pt-8 border-t border-border">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-full font-medium hover:bg-muted transition-all"
+            className="btn-secondary"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

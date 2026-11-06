@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,6 +9,13 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const display = Sora({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -75,9 +82,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.className} ${inter.variable} ${plexMono.variable} font-sans antialiased`}>
+      <body className={`${inter.className} ${inter.variable} ${display.variable} ${plexMono.variable} font-sans antialiased`}>
         <Header />
-        <main className="min-h-screen">
+        <main className="min-h-screen relative">
           {children}
         </main>
         <Footer />
